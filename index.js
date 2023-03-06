@@ -5,17 +5,20 @@ function createTemplate(){
     let templates = []
     for(let one of events){
         if(pagina.textContent === 'Home'){
-        templates.push(template(one.image, one.name, one.description, one.price));
+        templates.push(template(one.image, one.name, one.description, one.price, one._id));
         }
         if(pagina.textContent === 'Upcoming Events'){
             if(one.date >= currentDate){
-                templates.push(template(one.image, one.name, one.description, one.price));
+                templates.push(template(one.image, one.name, one.description, one.price, one._id));
             }
         }
         if(pagina.textContent === 'Past Events'){
             if(one.date < currentDate){
-                templates.push(template(one.image, one.name, one.description, one.price));
+                templates.push(template(one.image, one.name, one.description, one.price, one._id));
             }
+        }
+        if(pagina.textContent === 'Details'){
+
         }
     }
     console.log(templates);
