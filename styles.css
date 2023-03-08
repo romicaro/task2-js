@@ -92,10 +92,22 @@ font-size: 3rem;
 h3{
 font-size: 1.6rem;
 }
+.card-title{
+    background-color: beige;
+    font-size: 40px;
+}
+.checks{
+    background-color: aqua;
+    display: flex;
+}
 .eventos{
 display: flex;
 justify-content: space-evenly;
 flex-wrap: wrap;
+}
+.checks{
+    display: flex;
+    justify-content: space-evenly;
 }
 
 /* AQUI COMIENZA NUEVA CARD DE PRUEBA */
