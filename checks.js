@@ -7,9 +7,11 @@ data.events.forEach(each => {
 console.log(categories)
 
 
+
+
 function defineTemplate(eventos) {
     return `
-    <div class="tarjeta">
+    <div class="tarjeta"> 
         <img class="img-tarjeta" src="${eventos.image}" alt="${eventos.name}">
         <h3>${eventos.name}</h3>
         <div class="caja-parrafo">

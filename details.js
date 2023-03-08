@@ -24,14 +24,14 @@ console.log(detalle)
 function cardDetails(evento) {
     return `
         <div class="tarjeta">
-            <img class="img-tarjeta" src="${evento.image}" alt="Cinema">
+            <img class="img-tarjeta" src="${evento.image}" alt="${evento.name}">
             <h3>${evento.name}</h3>
             <div class="caja-parrafo">
-                <p class="descripcion">${evento.name}</p>
+                <p class="descripcion">${evento.description}</p>
             </div>
             <div class="pie-tarjeta">
-                <p class="p-tarjeta">Price: $</p>
-                <a class="p-tarjeta info" href="./details.html?nombre=${evento._id}">More Info</a>
+                <p class="p-tarjeta">Price: $${evento.price}</p>
+                <a class="p-tarjeta info" href="./index.html">Regresar</a>
             </div>
         </div>`;
 }
