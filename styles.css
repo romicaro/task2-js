@@ -99,8 +99,6 @@ font-size: 1.6rem;
 .checks{
     background-color: aqua;
     display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
 }
 .eventos{
 display: flex;
