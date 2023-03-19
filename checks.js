@@ -1,10 +1,10 @@
-let categories = [] //tipos va a ser el array que va a tener las categorias SIN repetirse
+/* let categories = [] //tipos va a ser el array que va a tener las categorias SIN repetirse
 data.events.forEach(each => {
     if ( ! categories.includes(each.category) ) {
         categories.push(each.category)
     }    
 })
-console.log(categories)
+console.log(categories) */
 
 
 
@@ -49,14 +49,29 @@ function notFound(id_etiqueta) {
 
 
 /*@captureData captura los datos de checks checkeados y del input text*/
-function captureData() {
-    let texto = document.getElementById('id_search').value
+function captureData(eventos, date) {
+    let texto = document.getElementById('id_search').value.toLowerCase()//agregué toLowerCase()
     let checks = Array.from(document.querySelectorAll('.class_checks:checked')).map(each => each.value)
-    let filtro = data.events.filter(each => {
-        return (each.name.includes(texto)) && (checks.length === 0 || checks.includes(each.category))
+    console.log(texto)
+    console.log(checks)
+    let filtro = eventos
+    if(pagina.textContent === 'Upcoming Events'){
+        filtro = filtro.filter(each => {
+            return (each.date >= date)
+        })
+    }
+    if(pagina.textContent === 'Past Events'){
+        filtro = filtro.filter(each => {
+            return (each.date < date)
+        })
+    }
+    filtro = filtro.filter(each => {
+        return (each.name.toLowerCase().includes(texto)) && (checks.length === 0 || checks.includes(each.category))
+        console.log(filtro)
     })
-    console.log("ver filtro")
+    console.log("ver filtro!!!!!!!!!!!!!!")
     console.log(filtro)
+    console.log(pagina.textContent)
     if (filtro.length>0) {
         printTemplates('#card-container',filtro)
     } else {
@@ -67,18 +82,17 @@ function captureData() {
 
 
 
-
-function printChecks(id_etiqueta,array_categories) {
+function printChecks(id_etiqueta,array_categories,eventos) {
     let container = document.querySelector(id_etiqueta)
     array_categories = array_categories.map(each=> {
         return `
         <fieldset>
             <label class="contact-label" for="${each}">${each}</label>
-            <input onclick="captureData()" class="class_checks contact-input" type="checkbox" value="${each}" name="tipo" id="${each}">
+            <input onclick="captureData(${eventos})" class="class_checks contact-input" type="checkbox" value="${each}" name="tipo" id="${each}">
         </fieldset>
         `
     })
-    array_categories.push(`<input onkeyup="captureData()" id="id_search" class="contact-input" type="text" name="texto" placeholder="search">`)
+    array_categories.push(`<input onkeyup="captureData(${eventos})" id="id_search" class="contact-input" type="text" name="texto" placeholder="search">`)
     container.innerHTML = array_categories.join('')
 }
-printChecks('#table-checks',categories)
+//printChecks('#table-checks',categories)
