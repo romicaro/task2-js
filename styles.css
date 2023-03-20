@@ -5,6 +5,7 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-decoration: none;
     font-size: 15px;
+    color: red;
     /* flex-grow: 1; */
     /* background-color: aqua; */
     /* display: flex; */
@@ -19,6 +20,18 @@ min-height: 100vh;
 header{
 display: flex;
 flex-direction: column;
+}
+.f-wrap{
+    font-size: 20px;
+    text-align: center;
+    /* flex-direction: column; */
+    align-items: center;
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+    /* margin-top: 40px; */
+    flex-wrap: wrap;
+    
 }
 .encabezado{
 display: flex;
@@ -217,6 +230,11 @@ background-color: rgb(1, 1, 77);
 /* -------AQUI COMIENZA TABLA DE ESTADISTICAS--------- */
 .table{
 padding: 20px 100px;
+}
+#tablaPast{
+display: flex;
+flex-direction: column;   
+flex-wrap: wrap;
 }
 .titulo{
 background-color: rgb(165, 165, 253);

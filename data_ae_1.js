@@ -1,5 +1,5 @@
 let data = {
-    "currentDate": "2022-01-01",
+    //"currentDate": "2022-01-01",
     "events": [/* 
       {
         _id: 1,

@@ -72,6 +72,7 @@ function captureData(eventos, date) {
     console.log("ver filtro!!!!!!!!!!!!!!")
     console.log(filtro)
     console.log(pagina.textContent)
+    console.log(texto)
     if (filtro.length>0) {
         printTemplates('#card-container',filtro)
     } else {
@@ -96,3 +97,42 @@ function printChecks(id_etiqueta,array_categories,eventos) {
     container.innerHTML = array_categories.join('')
 }
 //printChecks('#table-checks',categories)
+
+/* function defineTabla(dato){
+    return `
+    <td class="tabla">${dato}</td>
+    `
+} */
+
+function printTabla(id_etiqueta, datos){
+    let container = document.querySelector(id_etiqueta)
+    datos = datos.map(each => {
+        return `
+        <td class="tabla">${each}</td>
+        `
+    })
+    console.log(datos)
+    container.innerHTML = datos.join('')
+}
+
+function printTabla2(id_etiqueta, datos){
+    let container = document.querySelector(id_etiqueta)
+    datos = datos.map(each => {
+        return `
+                <tr class="tr">
+                    <td class="tabla">${each.categoria}</td>
+                    <td class="tabla">${each.ingresos}</td>
+                    <td class="tabla">${each.asistencia}</td>
+                </tr>
+        `;
+    })
+    console.log(datos)
+    container.innerHTML = datos.join('')
+}
+
+function printTabla3(id_etiqueta, datos){
+    let container = document.querySelector(id_etiqueta)
+    datos.forEach(each => {
+        printTabla((id_etiqueta, datos.each))
+    })
+}
