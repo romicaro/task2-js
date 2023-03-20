@@ -81,7 +81,8 @@ async function fetchApiStats(){
             pastStatistics.push({categoria:each, ingresos:recursos, asistencia:asistencia +"%"})
             console.log(pastStatistics)
         })
-        printTabla2('#tablaPast',pastStatistics)
+        printTabla2('#tablaPast2', pastStatistics)
+        //printTabla3('#aass', pastStatistics)
 
        
 

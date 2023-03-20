@@ -130,9 +130,22 @@ function printTabla2(id_etiqueta, datos){
     container.innerHTML = datos.join('')
 }
 
-function printTabla3(id_etiqueta, datos){
+/* function printTabla3(id_etiqueta, datos){
+    console.log(datos)
     let container = document.querySelector(id_etiqueta)
+    let arreglo = []
     datos.forEach(each => {
-        printTabla((id_etiqueta, datos.each))
+        let linea = [each.categoria, each.ingresos, each.asistencia]
+        console.log(linea)
+        linea = linea.map(each => {
+            return `
+            <td class="tabla">${each}</td>
+            `
+        })
+        console.log(linea)
+    arreglo.push(`<tr>`+linea[0]+`</tr>`)
+    
     })
-}
+    console.log(arreglo)
+    container.innerHTML = datos.join('') */
+
