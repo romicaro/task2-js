@@ -118,13 +118,11 @@ function printTabla(id_etiqueta, datos){
 function printTabla2(id_etiqueta, datos){
     let container = document.querySelector(id_etiqueta)
     datos = datos.map(each => {
-        return `
-                <tr class="tr">
+        return `<tr>
                     <td class="tabla">${each.categoria}</td>
                     <td class="tabla">${each.ingresos}</td>
                     <td class="tabla">${each.asistencia}</td>
-                </tr>
-        `;
+                </tr>`;
     })
     console.log(datos)
     container.innerHTML = datos.join('')

@@ -43,7 +43,52 @@ async function fetchApiStats(){
         
 
         //TABLA ESTADISTICA PARA UPCOMING EVENTS
+        let categ = [] //tipos va a ser el array que va a tener las categorias SIN repetirse
+        let eUpcoming = [] //eventos futuros
+        response.events.forEach(each => {
+            if (each.date > response.currentDate) {
+                eUpcoming.push(each)
+            }
+        })
+        console.log(eUpcoming)
         
+        
+        eUpcoming.forEach(each => {
+            if ( ! categ.includes(each.category)) {
+            categ.push(each.category)
+        }    
+        })
+        console.log(categ)
+        let upcomingStatistics = []
+        let upcomingRecursos = 0
+        let upcomingAsistencia = 0
+        let upcomingAcc = 0
+        categ.forEach(each => {
+            upcomingRecursos = 0
+            upcomingAsistencia = 0
+            upcomingAcc = 0
+            eUpcoming.forEach(one => {
+                if (each == one.category) {
+                    upcomingRecursos = upcomingRecursos + one.estimate * one.price
+                    upcomingAsistencia = upcomingAsistencia + one.estimate / one.capacity
+                    upcomingAcc = upcomingAcc + 1
+                    console.log(each)
+                    console.log(upcomingRecursos)
+                    console.log(upcomingAsistencia)
+                }    
+            })
+            upcomingAsistencia = (upcomingAsistencia * 100 / upcomingAcc).toFixed(2) 
+            console.log(upcomingAcc)
+            console.log(each)
+            console.log(upcomingRecursos)
+            console.log(upcomingAsistencia)
+            upcomingStatistics.push({categoria:each, ingresos:upcomingRecursos, asistencia:upcomingAsistencia +"%"})
+            console.log(upcomingStatistics)
+        })
+        printTabla2('#tablaUpcoming', upcomingStatistics)
+
+
+
 
 
 
@@ -81,7 +126,7 @@ async function fetchApiStats(){
             pastStatistics.push({categoria:each, ingresos:recursos, asistencia:asistencia +"%"})
             console.log(pastStatistics)
         })
-        printTabla2('#tablaPast2', pastStatistics)
+        printTabla2('#tablaPast', pastStatistics)
         //printTabla3('#aass', pastStatistics)
 
        

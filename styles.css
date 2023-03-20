@@ -5,7 +5,7 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-decoration: none;
     font-size: 15px;
-    color: red;
+    /* color: red; */
     /* flex-grow: 1; */
     /* background-color: aqua; */
     /* display: flex; */
@@ -229,23 +229,53 @@ background-color: rgb(1, 1, 77);
 }
 /* -------AQUI COMIENZA TABLA DE ESTADISTICAS--------- */
 .table{
-padding: 20px 100px;
+padding: 0px 100px 0px 100px;
+text-align: center;
 }
-#tablaPast{
+/* #tablaUpcoming{
+    display: flex;
+    flex-direction: column;   
+    flex-wrap: wrap;
+    text-align: center;
+    align-items: center;
+    padding: 0px 100px;
+} */
+/* #tablaPast{
 display: flex;
 flex-direction: column;   
 flex-wrap: wrap;
+text-align: center;
+align-items: center;
+padding: 0px 100px;
+} */
+.tablaPast{
+    display: flex;
+    flex-direction: column;   
+    flex-wrap: wrap;
+    text-align: center;
+    align-items: center;
+    padding: 0px 100px;
 }
+
 .titulo{
 background-color: rgb(165, 165, 253);
-border-collapse: collapse;
+/* border-collapse: collapse; */
 border: 1px solid rgb(205, 205, 255);
+font-size: 180%;
+font-weight: bold;
 }
 .tabla{
-border-collapse: collapse;
+/* border-collapse: collapse; */
 border: 1px solid rgb(205, 205, 255);
 background-color: blanchedalmond;
 width: 400px;
+text-align: center;
+}
+
+.negrita{
+    font-weight: bold;
+    font-size: 120%;
+    background-color: #e6bafe;
 }
 /* -------AQUI COMIENZA DETALLE DE EVENTO--------- */
 .d-eventos{
@@ -343,17 +373,12 @@ h3{
 .anc:hover{
     transform: scale(1.3);
 }
-.logo{
-    /* width: 35%; */
-    }   
+
 .container{
     display: flex;
     justify-content: center;
 }  
-.flecha{
-    /* width: 15%; */
-}   
-}
+}  
 @media only screen and (min-width: 320px) and (max-width: 670px){
 *{
     font-size: 12px;
@@ -382,9 +407,6 @@ h2{
 .container{
     display: flex;
     justify-content: center;
-}  
-.flecha{
-    /* width: 15%; */
 }   
 .red{
     width: 4rem;
