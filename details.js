@@ -1,26 +1,12 @@
-let eventos = data.events;
-let query = location.search
-console.log(query)
-let params = new URLSearchParams(query)
-console.log(params)
-let nroEvento = params.get("nombre") * 1
-console.log(nroEvento)
-
-
-console.log(data.events)
-console.log(nroEvento*1)
-let evento = data.events
-console.log(evento)
-let detalle = evento.find(each => each._id === nroEvento*1)
-console.log("imprimo array detalle")
-    
-console.log(detalle)
-
-
-
+//let eventos = data.events;
+//let query = location.search
+//console.log(query)
+//let params = new URLSearchParams(query)
+//console.log(params)
+//let nroEvento = params.get("nombre")
+//console.log(nroEvento)
 
 // @cardDetails define la card de detalle dinámica
-
 function cardDetails(evento) {
     return `
         <div class="tarjeta">
@@ -38,12 +24,28 @@ function cardDetails(evento) {
 
 function printTemplates(id_etiqueta,detalle) {
     let container = document.querySelector(id_etiqueta)
-    //let detalleFiltro = array_eventos.find(each => each.id === detalle * 1)
-    //animal = array_animales.filter(each => each.nombre === animal)[0]
-    console.log("imprimo filtro")
-    //console.log(detalleFiltro)
     let details = cardDetails(detalle)
     container.innerHTML = details //en este caso no es necesario el join() porque no es un array (directamente es un string)
 }
-printTemplates('#detail-container',detalle)
+//printTemplates('#detail-container',detalle)
 
+async function fetchApiStats(){
+    try {
+        let urlApi = 'https://api-amazingevents.onrender.com/api/amazing-events'
+        let fetchResponse = await (await fetch(urlApi))
+        //console.log(fetchResponse)
+        let response = await fetchResponse.json()
+        array = response.events
+        let query = location.search
+        let params = new URLSearchParams(query)
+        let nroEvento = params.get("nombre")
+        console.log(nroEvento)
+        array.filter(each => each.id == nroEvento)
+        filter = array.filter(each => each.id === nroEvento)
+        console.log(filter)
+        printTemplates('#detail-container',filter[0]) //falta agregar detalle
+    } catch{
+        console.log('Algo salió mal')
+    }
+}
+fetchApiStats()

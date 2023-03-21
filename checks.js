@@ -1,31 +1,18 @@
-/* let categories = [] //tipos va a ser el array que va a tener las categorias SIN repetirse
-data.events.forEach(each => {
-    if ( ! categories.includes(each.category) ) {
-        categories.push(each.category)
-    }    
-})
-console.log(categories) */
-
-
-
-
 function defineTemplate(eventos) {
     return `
     <div class="tarjeta"> 
-        <img class="img-tarjeta" src="${eventos.image}" alt="${eventos.name}">
+        <a href="./details.html?nombre=${eventos.id}"><img class="img-tarjeta" src="${eventos.image}" alt="${eventos.name}"></a>
         <h3>${eventos.name}</h3>
         <div class="caja-parrafo">
             <p class="descripcion">${eventos.description}</p>
         </div>
         <div class="pie-tarjeta">
             <p class="p-tarjeta">Price: $${eventos.price}</p>
-            <a class="p-tarjeta info" href="./details.html?nombre=${eventos._id}">More Info</a>
+            <a class="p-tarjeta info" href="./details.html?nombre=${eventos.id}">More Info</a>
         </div>
     </div>
 `
 }
-
-
 
 function printTemplates(id_etiqueta,filtro) {
     let container = document.querySelector(id_etiqueta)  /* trae el elemento con ese id */
@@ -44,15 +31,13 @@ function notFound(id_etiqueta) {
     `
 }
 
-
-//console.log(data.events.filter(each => each.category === "Race"))
-
-
 /*@captureData captura los datos de checks checkeados y del input text*/
 function captureData(eventos, date) {
     let texto = document.getElementById('id_search').value.toLowerCase()//agregué toLowerCase()
     let checks = Array.from(document.querySelectorAll('.class_checks:checked')).map(each => each.value)
+    console.log('captura de textbox:')
     console.log(texto)
+    console.log('captura de checks:')
     console.log(checks)
     let filtro = eventos
     if(pagina.textContent === 'Upcoming Events'){
@@ -67,11 +52,9 @@ function captureData(eventos, date) {
     }
     filtro = filtro.filter(each => {
         return (each.name.toLowerCase().includes(texto)) && (checks.length === 0 || checks.includes(each.category))
-        console.log(filtro)
+        //console.log(filtro)
     })
     console.log("ver filtro!!!!!!!!!!!!!!")
-    console.log(filtro)
-    console.log(pagina.textContent)
     console.log(texto)
     if (filtro.length>0) {
         printTemplates('#card-container',filtro)
@@ -81,9 +64,9 @@ function captureData(eventos, date) {
 }
 
 
-
-
 function printChecks(id_etiqueta,array_categories,eventos) {
+    if(pagina.textContent === 'Home' || 'Upcoming Events' || 'Past Events'){
+       
     let container = document.querySelector(id_etiqueta)
     array_categories = array_categories.map(each=> {
         return `
@@ -96,13 +79,7 @@ function printChecks(id_etiqueta,array_categories,eventos) {
     array_categories.push(`<input onkeyup="captureData(${eventos})" id="id_search" class="contact-input" type="text" name="texto" placeholder="search">`)
     container.innerHTML = array_categories.join('')
 }
-//printChecks('#table-checks',categories)
-
-/* function defineTabla(dato){
-    return `
-    <td class="tabla">${dato}</td>
-    `
-} */
+}
 
 function printTabla(id_etiqueta, datos){
     let container = document.querySelector(id_etiqueta)
@@ -111,7 +88,7 @@ function printTabla(id_etiqueta, datos){
         <td class="tabla">${each}</td>
         `
     })
-    console.log(datos)
+    //console.log(datos)
     container.innerHTML = datos.join('')
 }
 
@@ -124,7 +101,7 @@ function printTabla2(id_etiqueta, datos){
                     <td class="tabla">${each.asistencia}</td>
                 </tr>`;
     })
-    console.log(datos)
+    //console.log(datos)
     container.innerHTML = datos.join('')
 }
 

@@ -2,9 +2,9 @@ async function fetchApiStats(){
     try {
         let urlApi = 'https://api-amazingevents.onrender.com/api/amazing-events'
         let fetchResponse = await (await fetch(urlApi))
-        console.log(fetchResponse)
+        //console.log(fetchResponse)
         let response = await fetchResponse.json()
-        console.log(response);
+        //console.log(response);
      
         //ESTADISTICAS - events statistics
         let ePast = [] //eventos pasados
@@ -13,31 +13,21 @@ async function fetchApiStats(){
                 ePast.push(each)
             }
         })
-        console.log(ePast)
+        //console.log(ePast)
         let sorted = ePast.sort((each1, each2) => each1.assistance / each1.capacity - each2.assistance / each2.capacity)
-        console.log(ePast)
         let minAssistance = (ePast[0].name)
         let minPorcAssistance = ((ePast[0].assistance / ePast[0].capacity) * 100).toFixed(2) + "%"
-        console.log(minAssistance)
-        console.log(minPorcAssistance)
-        /* sorted = ePast.sort((each1, each2) => each2.assistance / each2.capacity - each1.assistance / each1.capacity) */
-        //console.log(ePast)
         let maxAssistance = (ePast[ePast.length-1].name)
         let maxPorcAssistance = ((ePast[ePast.length-1].assistance / ePast[ePast.length-1].capacity) * 100).toFixed(2) + "%"
-        console.log(maxAssistance)
-        console.log(maxPorcAssistance)
         let sorted2 = response.events.sort((each1,each2) => each2.capacity - each1.capacity)
         let maxCapacity = (response.events[0].name)
         let capacityMax = (response.events[0].capacity)
-        console.log(maxCapacity)
-        console.log(capacityMax)
+        //console.log(maxCapacity)
+        //console.log(capacityMax)
         let lineaTabla = [maxAssistance, minAssistance, maxCapacity]
-        console.log(lineaTabla)
+        //console.log(lineaTabla)
         printTabla('#titleStatistics', lineaTabla)
         lineaTabla = [maxPorcAssistance, minPorcAssistance, capacityMax]
-        /* let tablaEvents = [{titulo:maxAssistance, valor:maxPorcAssistance},{titulo:minAssistance, valor:minPorcAssistance},{titulo:maxCapacity, valor:capacityMax}] */
-        /* console.log(tablaEvents) */
-        console.log(lineaTabla)
         printTabla('#valoresStatistics', lineaTabla)
 
         
@@ -50,15 +40,13 @@ async function fetchApiStats(){
                 eUpcoming.push(each)
             }
         })
-        console.log(eUpcoming)
-        
-        
+
         eUpcoming.forEach(each => {
             if ( ! categ.includes(each.category)) {
             categ.push(each.category)
         }    
         })
-        console.log(categ)
+
         let upcomingStatistics = []
         let upcomingRecursos = 0
         let upcomingAsistencia = 0
@@ -72,24 +60,12 @@ async function fetchApiStats(){
                     upcomingRecursos = upcomingRecursos + one.estimate * one.price
                     upcomingAsistencia = upcomingAsistencia + one.estimate / one.capacity
                     upcomingAcc = upcomingAcc + 1
-                    console.log(each)
-                    console.log(upcomingRecursos)
-                    console.log(upcomingAsistencia)
                 }    
             })
             upcomingAsistencia = (upcomingAsistencia * 100 / upcomingAcc).toFixed(2) 
-            console.log(upcomingAcc)
-            console.log(each)
-            console.log(upcomingRecursos)
-            console.log(upcomingAsistencia)
             upcomingStatistics.push({categoria:each, ingresos:upcomingRecursos, asistencia:upcomingAsistencia +"%"})
-            console.log(upcomingStatistics)
         })
         printTabla2('#tablaUpcoming', upcomingStatistics)
-
-
-
-
 
 
         //TABLA ESTADISTICA PARA PAST EVENTS
@@ -99,7 +75,7 @@ async function fetchApiStats(){
             categories.push(each.category)
         }    
         })
-        console.log(categories)
+        //console.log(categories)
         let pastStatistics = []
         let recursos = 0
         let asistencia = 0
@@ -113,27 +89,15 @@ async function fetchApiStats(){
                     recursos = recursos + one.assistance * one.price
                     asistencia = asistencia + one.assistance / one.capacity
                     acc = acc + 1
-                    console.log(each)
-                    console.log(recursos)
-                    console.log(asistencia)
                 }    
             })
             asistencia = (asistencia * 100 / acc).toFixed(2) 
-            console.log(acc)
-            console.log(each)
-            console.log(recursos)
-            console.log(asistencia)
             pastStatistics.push({categoria:each, ingresos:recursos, asistencia:asistencia +"%"})
-            console.log(pastStatistics)
         })
         printTabla2('#tablaPast', pastStatistics)
-        //printTabla3('#aass', pastStatistics)
-
-       
-
 
     } catch{
-        console.log('Algo salió mal')
+        //console.log('Algo salió mal')
     }
 }
 fetchApiStats()
