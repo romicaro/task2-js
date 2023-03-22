@@ -1,11 +1,3 @@
-//let eventos = data.events;
-//let query = location.search
-//console.log(query)
-//let params = new URLSearchParams(query)
-//console.log(params)
-//let nroEvento = params.get("nombre")
-//console.log(nroEvento)
-
 // @cardDetails define la card de detalle dinámica
 function cardDetails(evento) {
     return `
