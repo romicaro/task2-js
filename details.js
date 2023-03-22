@@ -1,15 +1,19 @@
 // @cardDetails define la card de detalle dinámica
 function cardDetails(evento) {
     return `
-        <div class="tarjeta">
-            <img class="img-tarjeta" src="${evento.image}" alt="${evento.name}">
-            <h3>${evento.name}</h3>
-            <div class="caja-parrafo">
-                <p class="descripcion">${evento.description}</p>
-            </div>
-            <div class="pie-tarjeta">
-                <p class="p-tarjeta">Price: $${evento.price}</p>
-                <a class="p-tarjeta info" href="./index.html">Regresar</a>
+        <div class="d-tarjeta detail">
+            <img class="d-img-tarjeta" src="${evento.image}" alt="${evento.name}">
+            <div class="d-info-tarjeta">
+                <h3>${evento.name}</h3>
+                <h4>Date: ${evento.date}</h4>
+                <h4>Place: ${evento.place}</h4>
+                <div class="d-caja-parrafo">
+                    <p class="descripcion">${evento.description}</p>
+                </div>
+                <div class="d-pie-tarjeta">
+                    <p class="d-p-tarjeta">Price: $${evento.price}</p>
+                    <a class="d-p-tarjeta info" href="./index.html">Regresar</a>
+                </div>
             </div>
         </div>`;
 }

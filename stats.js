@@ -29,6 +29,20 @@ async function fetchApiStats(){
         printTabla('#titleStatistics', lineaTabla)
         lineaTabla = [maxPorcAssistance, minPorcAssistance, capacityMax]
         printTabla('#valoresStatistics', lineaTabla)
+/*         console.log("XXXXXXXXXXXXXXXXXXXXXX")
+        console.log(ePast)
+        console.log(ePast[0])
+        let ingresos = ePast.reduce(
+            (acum,each) => {
+                let tickets =  each.assistance
+                console.log(tickets)
+                let precio = each.price
+                let ingresos = tickets * precio
+                return acum + ingresos
+            },
+            0
+        )
+        console.log(ingresos) */
 
         
 
