@@ -112,9 +112,9 @@ async function fetchApi() {
                 let container = document.querySelector(id_etiqueta)
                 array_categories = array_categories.map(each => {
                     return `
-        <fieldset>
-            <label class="contact-label" for="${each}">${each}</label>
+        <fieldset >
             <input onclick="captureData()" class="class_checks contact-input" type="checkbox" value="${each}" name="tipo" id="${each}">
+            <label class="contact-label" for="${each}">${each}</label>
         </fieldset>
         `
                 })
